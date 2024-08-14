@@ -81,12 +81,9 @@
   "devDependencies": {
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.14",
-    "@vitejs/plugin-react": "^4.3.1",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7"
+
+    "concurrently": "^8.2.2"
+
     
   },
   "scripts": {
@@ -97,17 +94,12 @@
     "build:js": "react-scripts build",
     "build:css": "sass --style=compressed --no-source-map src/sass/styles.scss:public/css/styles.css",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+    "eject": "react-scripts eject"
+    
 },
 
  
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",
