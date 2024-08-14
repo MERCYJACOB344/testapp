@@ -66,7 +66,7 @@
     "react-table": "^7.7.0",
     "react-tag-autocomplete": "^6.2.0",
     "react-toastify": "^7.0.4",
-    "reduxjs-toolkit-persist": "^7.0.1",
+    "reduxjs-toolkit-persist": "^1.6.1",
     "regenerator-runtime": "^0.14.1",
     "sass": "^1.77.6",
     "sortablejs": "^1.14.0",
