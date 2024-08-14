@@ -96,11 +96,11 @@
     "build": "react-scripts build", 
     "build:js": "react-scripts build",
     "build:css": "sass --style=compressed --no-source-map src/sass/styles.scss:public/css/styles.css",
+    "install": "npm install --legacy-peer-deps",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
- 
-  },
+},
   
  
   "eslintConfig": {
