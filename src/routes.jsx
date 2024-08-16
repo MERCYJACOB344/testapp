@@ -20,10 +20,7 @@ const initiation = {
   grid: lazy(() => import('./views/initiation/gridList'))
 
 };
-const gis = {
-  default: lazy(() => import('./views/gis/gisDefault')),
 
-};
 
 const fieldSide = {
   default: lazy(() => import('./views/fieldSide/fieldSide')),
@@ -83,11 +80,7 @@ const routesAndMenuItems = {
       ],
     },
 
-    {
-      path: `${appRoot}/gis`,
-      component: gis.default,
-      label: 'menu.gis',
-    },
+
     {
       path: `${appRoot}/fieldSide`,
       component: fieldSide.default,
