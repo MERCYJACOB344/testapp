@@ -18,6 +18,9 @@ module.exports = {
   settings: { react: { version: 'detect' } },
   plugins: ['react-refresh'],
   rules: {
+    'react-hooks/exhaustive-deps':'off',
+    'react-refresh/only-export-components':'off',
+    'react-hooks/exhaustive-deps': 'off',
     'react/no-unknown-property': 'off',
     'react-hooks/rules-of-hooks': 'off',
     'react-hooks/rules-of-hooks': 'off',
