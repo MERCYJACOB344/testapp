@@ -8,18 +8,11 @@ import { DEFAULT_PATHS } from './config.jsx';
 
 const apps = {};
 
-const calendar = {
-  default: lazy(() => import('./views/calendar/Calendar')),
 
-};
 const dashboards = {
   default: lazy(() => import('./views/dashboards/DashboardsDefault')),
 };
-const initiation = {
-  index: lazy(() => import('./views/initiation/initiationWork')),
-  grid: lazy(() => import('./views/initiation/gridList'))
 
-};
 
 
 const fieldSide = {
@@ -58,27 +51,14 @@ const routesAndMenuItems = {
       redirect: true,
       to: `${appRoot}/loginpage`,
     },
-    {
-      path: `${appRoot}/calendar`,
-      component: calendar.default,
-      
-    },
+   
 
     {
       path: `${appRoot}/dashboards`,
       component: dashboards.default,
       label: 'menu.dashboard',
     },
-    {
-      path: `${appRoot}/initiation`,
-      label: 'menu.initiation',
-      component: initiation.index,
-      subs: [
-        { path: '/CreateInitiation', label: 'menu.createInitiation', component: initiation.index },
-        { path: '/GridInitiation', label: 'menu.gridInitiation', component: initiation.grid },
-        // { path: '/CopyFCR', component: fcr.createfcr },
-      ],
-    },
+    
 
 
     {
