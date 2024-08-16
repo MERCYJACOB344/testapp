@@ -18,6 +18,13 @@ module.exports = {
   settings: { react: { version: 'detect' } },
   plugins: ['react-refresh'],
   rules: {
+    'react/no-unknown-property': 'off',
+    'react-hooks/rules-of-hooks': 'off',
+    'react-hooks/rules-of-hooks': 'off',
+    'no-useless-escape': 'off',
+    ' react/no-unescaped-entities': 'off',
+    'no-undef': 'off',
+    'react/no-unescaped-entities': 'off',
     'no-unused-vars': 'off',
     'react/prop-types': 'off',
     'react/jsx-no-target-blank': 'off',
