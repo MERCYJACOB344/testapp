@@ -75,7 +75,11 @@
   "devDependencies": {
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.14",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7"
   },
   "scripts": {
     "start:css": "sass --style=compressed --watch src/sass/styles.scss:public/css/styles.css",
@@ -85,7 +89,9 @@
     "build:js": "react-scripts build",
     "build:css": "sass --style=compressed --no-source-map src/sass/styles.scss:public/css/styles.css",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint ./src --fix",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "browserslist": {
     "production": [
