@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Button, Form, Alert } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CsLineIcons from '../../cs-line-icons/CsLineIcons';
-import { setCurrentUser } from '../../auth/authSlice';
-import { API , Auth} from 'aws-amplify';
+import { API, Auth } from 'aws-amplify';
 import { useAppContext } from '../../lib/contextLib';
 import { storeSession } from '../../lib/commonLib';
 import { USER_ROLE } from '../../constants.jsx';
-import { checkForValidSession } from '../../lib/commonLib';
-
-
-
 
 const Login = () => {
   const history = useHistory();
@@ -25,18 +20,15 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isEnableLogin, setIsEnableLogin] = useState(false);
   const { userHasAuthenticated } = useAppContext();
-  const { userEmail,setuserEmail } = useAppContext();
+  const { userEmail, setuserEmail } = useAppContext();
   const dispatch = useDispatch();
- 
+  
   React.useEffect(() => {
     document.documentElement.setAttribute('data-placement', 'horizontal');
-   
-    // dispatch(setPlacement('horizontal'));
   }, []);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -45,14 +37,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Log the form data
-    console.log(formData);
-
-    
-   
-
-    
- 
     try {
       setIsLoading(true);
       setIsEnableLogin(true);
@@ -60,56 +44,42 @@ const Login = () => {
       userHasAuthenticated(true);
       const user_Email = formData.email;
       setuserEmail(user_Email);
-      console.log(user_Email);
-      console.log('log',userEmail);
+
       let userObj = {
-            role: USER_ROLE.User,
-            email: user_Email,
-            approved: true,
-          };
-      const loginState = { isAuthenticated: true,user_Email, userInfo: userObj };
-    
+        role: USER_ROLE.User,
+        email: user_Email,
+        approved: true,
+      };
+      const loginState = { isAuthenticated: true, user_Email, userInfo: userObj };
+
       storeSession(loginState);
+
+      
+      const response = await fetch('https://wonderful-stone-07c1f4d1e.5.azurestaticapps.net/api//getUsersInfo', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log('Response from Azure Function:', data);
+
       history.push('/dashboards');
     } catch (error) {
       console.error('Error:', error.message);
       setIsEnableLogin(false);
       setIsLoading(false);
-      setDismissingAlertShow(true);   
+      setDismissingAlertShow(true);
       setalertVariant("danger");
-      setalertMessage(error.message);  
+      setalertMessage(error.message);
     }
   };
   
-    
-
-    // const userData = {
-    //   headers: {
-    //     'Content-Type': 'application/json; charset=UTF-8',
-    //   },
-    //   body: formData,
-    // };
-
-  //   API.post('NOTES', `/logininfo`, userData)
-  //     .then((response) => {
-  //       console.log('Response:', response);
-  //       setAlertVariant('success');
-  //       setAlertMessage('Login successful!');
-  //       setDismissingAlertShow(true);
-
-  //       // Wait for a short time before navigating to another page
-  //       setTimeout(() => {
-  //         history.push('/dashboards');
-  //       }, 2000); // 2 seconds delay
-  //     })
-  //     .catch((error) => {
-  //       setAlertVariant('danger');
-  //       setAlertMessage('Unable to Login.');
-  //       setDismissingAlertShow(true);
-  //       console.error('Error:', error.message);
-  //     });
-   console.log(alertMessage);
-
   return (
     <div style={{ textAlign: '-webkit-center' }}>
       <div className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 rounded">
@@ -158,7 +128,7 @@ const Login = () => {
               </div>
               <Button size="lg" type="submit" disabled={isEnableLogin}>
                 {isEnableLogin ? (
-                  < div >
+                  <div>
                     <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     Logging In..
                   </div>
