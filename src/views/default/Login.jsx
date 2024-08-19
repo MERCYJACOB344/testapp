@@ -55,7 +55,7 @@ const Login = () => {
       storeSession(loginState);
 
       
-      const response = await fetch('https://wonderful-stone-07c1f4d1e.5.azurestaticapps.net/api//getUsersInfo', {
+      const response = await fetch('https://wonderful-stone-07c1f4d1e.5.azurestaticapps.net/api/getUsersInfo', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
